@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Android Teacher</string>
+    <string name="img_background">Картинка фона</string>
+    <string name="start">Начать</string>
+    <string name="Android_teacher">Учитель по Андроиду</string>
+    <string name="back">Назад</string>
 </resources>

@@ -1,107 +1,46 @@
 package space.kroha.androidteacher;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        db = FirebaseFirestore.getInstance();
 
+        //Убираем все менюшки с экрана начало
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //Убираем все менюшки с экрана конец
 
+        Button buttonStart = findViewById(R.id.buttonStart);
 
-
-    }
-}
-
-
-
-
-
-      /*   слушатель на изменение в базе  мгновенное изменение в логе данных
-      db.collection("users").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        //Слушатель на нажатие кнопки начало
+        buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if (queryDocumentSnapshots != null) {
-                        for (QueryDocumentSnapshot queryDocumentSnapshot: queryDocumentSnapshots){
-                            Map<String, Object> user = queryDocumentSnapshot.getData();
-                            Log.i("FireStore", user.get("name").toString());
-                            Log.i("FireStore", user.get("lastname").toString());
-                            Log.i("FireStore", user.get("age").toString());
-                        }
-                }else{
-                    Toast.makeText(MainActivity.this, "ERROR null", Toast.LENGTH_SHORT).show();
-                }
-
-
+            public void onClick(View v) {
+            try {
+                Intent intent = new Intent(MainActivity.this, GameLevels.class);
+                startActivity(intent);
+                finish();
+            }catch (Exception e){
 
             }
-        });*/
 
-
-
-/*  добавление в базу
-
-        Map<String, Object> user = new HashMap<>();
-        user.put("name", "Иван");
-        user.put("lastname", "Иванов");
-        user.put("age", 15);
-
-        db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(MainActivity.this, "TRU", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
             }
         });
-        */
+        //Слушатель на нажатие кнопки конец
+    }
+    //системная кнопка "назад" делаем выход на двойной щелчек начало
 
+    //системная кнопка "назад" делаем выход на двойной щелчек конец
 
-
-/*Получение данных
-
-  db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(MainActivity.this, "TRU", Toast.LENGTH_SHORT).show();
-                    QuerySnapshot querySnapshot = task.getResult();
-                    if (querySnapshot == null) return;
-                    for (QueryDocumentSnapshot queryDocumentSnapshot: querySnapshot){
-                        Map<String, Object> user = queryDocumentSnapshot.getData();
-                        Log.i("FireStore", user.get("name").toString());
-                        Log.i("FireStore", user.get("lastname").toString());
-                        Log.i("FireStore", user.get("age").toString());
-                    }
-                }else{
-                    Toast.makeText(MainActivity.this, "ERROR" + task.getException(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
+}
