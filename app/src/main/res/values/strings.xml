@@ -3,5 +3,6 @@
     <string name="img_background">Картинка фона</string>
     <string name="start">Начать</string>
     <string name="Android_teacher">Учитель по Андроиду</string>
-    <string name="back">Назад</string>
+    <string name="back1">Назад</string>
+    <string name="level">Уровень:</string>
 </resources>
