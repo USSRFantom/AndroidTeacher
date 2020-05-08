@@ -54,6 +54,13 @@ public class Level1 extends AppCompatActivity  {
         setButtonText(questionNumber);
     }
 
+    public void Click(View view) {
+
+        String b = button2.getText().toString();
+        System.out.println(b);
+        questionNumber++;
+        setButtonText(questionNumber);
+    }
 
 
     private void readData(final FirestoreCallback firestoreCallback){
@@ -75,7 +82,7 @@ public class Level1 extends AppCompatActivity  {
                       }else {
                           Log.i("123233333", "НЕТ ДАННЫХ");
                       }
-                      Log.i("333", list.get(1).getAge());
+                      Log.i("333", list.get(1).getAnswer1());
                   }
               });
     }
@@ -89,10 +96,9 @@ public class Level1 extends AppCompatActivity  {
         readData(new FirestoreCallback() {
             @Override
             public void onCallback(List<Lesson> list) {
-                button2.setText(list.get(a).getName());
-                button3.setText(list.get(a + 1).getName());
-                button4.setText(list.get(a + 2).getName());
-                System.out.println(a);
+                button2.setText(list.get(a).getAnswer1());
+                button3.setText(list.get(a).getAnswer2());
+                button4.setText(list.get(a).getAnswer3());
 
             }
         });

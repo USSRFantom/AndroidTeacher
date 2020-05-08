@@ -1,41 +1,41 @@
 package space.kroha.androidteacher;
 
 class Lesson {
-    private String age;
-    private String lastname;
-    private String name;
+    private String answer1;
+    private String answer2;
+    private String answer3;
 
 
     public Lesson() {
     }
 
-    public Lesson(String age, String lastname, String name) {
-        this.age = age;
-        this.lastname = lastname;
-        this.name = name;
+    public Lesson(String answer1, String answer2, String answer3) {
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
     }
 
-    public String getAge() {
-        return age;
+    public String getAnswer1() {
+        return answer1;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setAnswer1(String answer1) {
+        this.answer1 = answer1;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getAnswer2() {
+        return answer2;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setAnswer2(String answer2) {
+        this.answer2 = answer2;
     }
 
-    public String getName() {
-        return name;
+    public String getAnswer3() {
+        return answer3;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAnswer3(String answer3) {
+        this.answer3 = answer3;
     }
 }
