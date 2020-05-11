@@ -4,6 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +36,7 @@ public class Level1 extends AppCompatActivity  {
     int questionNumber;
     private static FirebaseFirestore db;
     public static List<Lesson> list;
+    Dialog dialog;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -41,14 +47,58 @@ public class Level1 extends AppCompatActivity  {
         button3 = findViewById(R.id.button3);
         button4 = findViewById(R.id.button4);
         img = findViewById(R.id.imageTest);
-
         list = new ArrayList<>();
+
+
+        //скругление картинки
         img.setClipToOutline(true);
 
+        //убираем менюшку с экрана
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        list = new ArrayList<>();
+        //Вызов диалогового окна в начале игры
+        dialog = new Dialog(this);//создаем новое диалоговое окно
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
+        dialog.setContentView(R.layout.previewdialog);//путь к макету диалогового окна
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон диалогового окна
+        dialog.setCancelable(false);//диалог нельзя закрыть кнопкой назат
+        //кнопка закрывающая диалоговое окно
+        TextView btnclose = dialog.findViewById(R.id.btnclose);
+        btnclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(Level1.this, GameLevels.class);  //возвращаемся в прошлое активити с выбором уровня
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    //Кода нет
+                }
+                dialog.dismiss();//закрываем диалоговое окно
+            }
+        });
+        //кнопка закрывающая диалоговое окно конец
+        //кнопка продолжить начало
+        Button buttoncontinue = dialog.findViewById(R.id.buttoncontinue);
+        buttoncontinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    dialog.dismiss();//закрываем диалоговое окно, чтобы приступить к прохождению уровня
+                }catch (Exception e){
+                    //Кода нет
+                }
+            }
+        });
+        //кнопка продолжить конец
+
+
+
+
+        dialog.show();//показать диалоговое окно
+
+
         questionNumber = 0;
 
         setButtonText(questionNumber);

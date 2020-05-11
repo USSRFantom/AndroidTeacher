@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/javavackground"
                 android:layout_gravity="start"
@@ -74,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center"
             android:background="@drawable/style_btn_stroke"
             android:text="@string/textcontinue"
