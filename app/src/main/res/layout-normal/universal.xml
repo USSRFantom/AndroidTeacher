@@ -200,11 +200,10 @@
                 <ImageView
                     android:id="@+id/imageTest"
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_height="320dp"
+                    android:background="@drawable/style_img_universal"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/test2"
-                    android:background="@drawable/style_img_universal"/>
+                    android:src="@drawable/test2" />
             </LinearLayout>
 
             <LinearLayout
@@ -212,7 +211,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:layout_marginTop="5dp">
 
                 <Button
@@ -228,7 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="10dp">
 
                 <Button
                     android:id="@+id/button3"
@@ -243,7 +242,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="10dp">
 
                 <Button
                     android:id="@+id/button4"

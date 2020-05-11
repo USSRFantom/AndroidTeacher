@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="levelone">Уровень перрвый!\nТут ты сможешь проверить свои минимальные знания в Java!\nНабери 20 очков!</string>
+</resources>
