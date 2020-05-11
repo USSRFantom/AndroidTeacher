@@ -47,6 +47,8 @@ public class Level1 extends AppCompatActivity  {
         button3 = findViewById(R.id.button3);
         button4 = findViewById(R.id.button4);
         img = findViewById(R.id.imageTest);
+        TextView text_levels = findViewById(R.id.text_levels);
+        text_levels.setText(R.string.level1);
         list = new ArrayList<>();
 
 
@@ -63,6 +65,7 @@ public class Level1 extends AppCompatActivity  {
         dialog.setContentView(R.layout.previewdialog);//путь к макету диалогового окна
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон диалогового окна
         dialog.setCancelable(false);//диалог нельзя закрыть кнопкой назат
+
         //кнопка закрывающая диалоговое окно
         TextView btnclose = dialog.findViewById(R.id.btnclose);
         btnclose.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +82,7 @@ public class Level1 extends AppCompatActivity  {
             }
         });
         //кнопка закрывающая диалоговое окно конец
+
         //кнопка продолжить начало
         Button buttoncontinue = dialog.findViewById(R.id.buttoncontinue);
         buttoncontinue.setOnClickListener(new View.OnClickListener() {
@@ -93,8 +97,21 @@ public class Level1 extends AppCompatActivity  {
         });
         //кнопка продолжить конец
 
-
-
+        //кнопка "назад" начало
+        Button btn_back = findViewById(R.id.button_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(Level1.this, GameLevels.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    //Кода нет
+                }
+            }
+        });
+        //кнопка "назад" конец
 
         dialog.show();//показать диалоговое окно
 
@@ -154,4 +171,16 @@ public class Level1 extends AppCompatActivity  {
         });
     }
 
+    //системная кнопка назад начало
+    @Override
+    public void onBackPressed(){
+        try {
+            Intent intent = new Intent(Level1.this, GameLevels.class);
+            startActivity(intent);
+            finish();
+        }catch (Exception e){
+            //Кода нет
+        }
+    }
+    //системная кнопка назад конец
 }
