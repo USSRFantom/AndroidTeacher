@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -154,7 +155,7 @@ public class Level1 extends AppCompatActivity  {
               });
     }
 
-
+    //метод который хватает второй поток и возвращает из него данные устанавливая сразу в нашу вью нужные элементы
     private interface FirestoreCallback{
         void onCallback(List<Lesson> list);
     }
@@ -166,6 +167,9 @@ public class Level1 extends AppCompatActivity  {
                 button2.setText(list.get(a).getAnswer1());
                 button3.setText(list.get(a).getAnswer2());
                 button4.setText(list.get(a).getAnswer3());
+                Log.i("44444", list.get(a).getAnswer4());
+                Picasso.get().load(list.get(a).getAnswer4()).into(img);
+
 
             }
         });
