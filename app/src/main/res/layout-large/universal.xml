@@ -253,8 +253,7 @@
                     android:layout_height="wrap_content"
                     android:text="Button 3"
                     android:textSize="40sp"
-                    android:background="@drawable/style_btn_white"
-                    android:onClick="Click"/>
+                    android:background="@drawable/style_btn_white" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

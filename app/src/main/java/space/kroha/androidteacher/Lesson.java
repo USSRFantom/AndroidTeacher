@@ -5,16 +5,18 @@ class Lesson {
     private String answer2;
     private String answer3;
     private String answer4;
+    private String answer5;
 
 
     public Lesson() {
     }
 
-    public Lesson(String answer1, String answer2, String answer3, String answer4) {
+    public Lesson(String answer1, String answer2, String answer3, String answer4, String truAnswer5) {
         this.answer1 = answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
         this.answer4 = answer4;
+        this.answer4 = answer5;
     }
 
     public String getAnswer1() {
@@ -47,5 +49,13 @@ class Lesson {
 
     public void setAnswer4(String answer4) {
         this.answer4 = answer4;
+    }
+
+    public String getAnswer5() {
+        return answer5;
+    }
+
+    public void setAnswer5(String answer5) {
+        this.answer5 = answer5;
     }
 }

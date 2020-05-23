@@ -8,9 +8,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,11 +35,13 @@ public class Level1 extends AppCompatActivity  {
     Button button2;
     Button button3;
     Button button4;
+    String textAnswer;
     ImageView img;
     int questionNumber;
     private static FirebaseFirestore db;
     public static List<Lesson> list;
     Dialog dialog;
+    public int count = 0;//счетчик правильных ответов
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -51,6 +55,7 @@ public class Level1 extends AppCompatActivity  {
         TextView text_levels = findViewById(R.id.text_levels);
         text_levels.setText(R.string.level1);
         list = new ArrayList<>();
+
 
 
         //скругление картинки
@@ -115,20 +120,66 @@ public class Level1 extends AppCompatActivity  {
         //кнопка "назад" конец
 
         dialog.show();//показать диалоговое окно
-
-
         questionNumber = 0;
-
         setButtonText(questionNumber);
+
+        //массив для прогресса игры начало
+        final int[] progress = {R.id.point1, R.id.point2, R.id.point3, R.id.point4, R.id.point5, R.id.point6, R.id.point7, R.id.point8, R.id.point9, R.id.point10, R.id.point11, R.id.point12,
+                R.id.point13, R.id.point14, R.id.point15, R.id.point16, R.id.point17, R.id.point18, R.id.point19, R.id.point20};
+        //массив для прогресса игры конец
+
+        //проверка нажатия на первую кнопку
+        button2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //проверяем касание
+                if (event.getAction()==MotionEvent.ACTION_DOWN){
+                    button3.setEnabled(false); //блокируем кнопки остальные
+                    button4.setEnabled(false); //блокируем кнопки остальные
+
+                    if (button2.getText() == textAnswer){
+                        button2.setBackgroundColor(getResources().getColor(R.color.colorGreen)); //если правильно заливаем фон кнопки зеленым цветом
+                    }else{
+                        button2.setBackgroundColor(getResources().getColor(R.color.colorAccent));//если не правильно заливаем фон кнопки красным цветом
+                    }
+
+
+                }else
+                    //проверка отпуска пальца
+                    if (event.getAction()==MotionEvent.ACTION_UP){
+                        if (button2.getText() == textAnswer){
+                            if (count < 20 ){
+                                count++;
+                            }
+                            //закрашиваем прогресс серым цветом
+                            for (int i = 0; i <20; i++){
+                                TextView tv = findViewById(progress[i]);
+                                tv.setBackgroundResource(R.drawable.style_points);
+                            }
+                            //закрашиваем прогресс серым цветом конец
+
+                            //определяем правильные ответы и закрашиваем зеленым начало
+                            for (int i = 0; i < count; i ++){
+                                TextView tv = findViewById(progress[i]);
+                                tv.setBackgroundResource(R.drawable.style_points_green);
+                            }
+                            //определяем правильные ответы и закрашиваем зеленым конец
+
+
+                        }else{
+
+                        }
+
+                }
+                //проверяем касание конец
+
+
+                return true;
+            }
+        });
+        //проверка нажатия на первую кнопку конец
     }
 
-    public void Click(View view) {
-
-        String b = button2.getText().toString();
-        System.out.println(b);
-        questionNumber++;
-        setButtonText(questionNumber);
-    }
 
 
     private void readData(final FirestoreCallback firestoreCallback){
@@ -155,22 +206,19 @@ public class Level1 extends AppCompatActivity  {
               });
     }
 
-    //метод который хватает второй поток и возвращает из него данные устанавливая сразу в нашу вью нужные элементы
     private interface FirestoreCallback{
         void onCallback(List<Lesson> list);
     }
-
+        //метод установки данных в кнопки и картинку
     public void setButtonText (final int a){
         readData(new FirestoreCallback() {
             @Override
             public void onCallback(List<Lesson> list) {
-                button2.setText(list.get(a).getAnswer1());
-                button3.setText(list.get(a).getAnswer2());
-                button4.setText(list.get(a).getAnswer3());
-                Log.i("44444", list.get(a).getAnswer4());
-                Picasso.get().load(list.get(a).getAnswer4()).into(img);
-
-
+                button2.setText(list.get(a).getAnswer1());//установка значений для кнопки 1
+                button3.setText(list.get(a).getAnswer2());//установка значений для кнопки 1
+                button4.setText(list.get(a).getAnswer3());//установка значений для кнопки 1
+                Picasso.get().load(list.get(a).getAnswer4()).into(img);//установка картинки
+                textAnswer = list.get(a).getAnswer1();
             }
         });
     }

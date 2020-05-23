@@ -58,6 +58,7 @@
                     android:padding="10dp"
 
                     />
+
             </LinearLayout>
 
             <LinearLayout
@@ -250,9 +251,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Button 3"
-                    android:background="@drawable/style_btn_white"
-                    android:onClick="Click"/>
+                    android:background="@drawable/style_btn_white" />
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>
