@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,6 +43,9 @@ public class Level1 extends AppCompatActivity  {
     public static List<Lesson> list;
     Dialog dialog;
     public int count = 0;//счетчик правильных ответов
+    int correctAnswer;
+    int wrongAnswer;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -128,57 +132,148 @@ public class Level1 extends AppCompatActivity  {
                 R.id.point13, R.id.point14, R.id.point15, R.id.point16, R.id.point17, R.id.point18, R.id.point19, R.id.point20};
         //массив для прогресса игры конец
 
+
+
+
+//==================================================================================
         //проверка нажатия на первую кнопку
-        button2.setOnTouchListener(new View.OnTouchListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                //проверяем касание
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    button3.setEnabled(false); //блокируем кнопки остальные
-                    button4.setEnabled(false); //блокируем кнопки остальные
+            public void onClick(View v) {
+                if (questionNumber < 20){
+                    if (button2.getText().toString().equals(textAnswer))//проверяем рпавильность ответа
+                    {
+                        Log.i("111111", "Первая кнопка");
+                        Log.i("111111", "Получаем ответ с кнопки " + button2.getText().toString());
+                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
+                        Log.i("111111", "Верно");
 
-                    if (button2.getText() == textAnswer){
-                        button2.setBackgroundColor(getResources().getColor(R.color.colorGreen)); //если правильно заливаем фон кнопки зеленым цветом
+                        Toast.makeText(getApplicationContext(), "Верно!", Toast.LENGTH_SHORT).show();
+                        TextView tv = findViewById(progress[questionNumber]);
+                        tv.setBackgroundResource(R.drawable.style_points_green);
+                        correctAnswer++;
+
+
                     }else{
-                        button2.setBackgroundColor(getResources().getColor(R.color.colorAccent));//если не правильно заливаем фон кнопки красным цветом
+                        Log.i("111111", "Первая кнопка");
+                        Log.i("111111", "Получаем ответ с кнопки " + button2.getText().toString());
+                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
+                        Log.i("111111", "Ошибка");
+
+                        Toast.makeText(getApplicationContext(), "Ошибка!", Toast.LENGTH_SHORT).show();
+                        TextView tv = findViewById(progress[questionNumber]);
+                        tv.setBackgroundResource(R.drawable.style_points_red);
+                        wrongAnswer++;
+
                     }
-
-
-                }else
-                    //проверка отпуска пальца
-                    if (event.getAction()==MotionEvent.ACTION_UP){
-                        if (button2.getText() == textAnswer){
-                            if (count < 20 ){
-                                count++;
-                            }
-                            //закрашиваем прогресс серым цветом
-                            for (int i = 0; i <20; i++){
-                                TextView tv = findViewById(progress[i]);
-                                tv.setBackgroundResource(R.drawable.style_points);
-                            }
-                            //закрашиваем прогресс серым цветом конец
-
-                            //определяем правильные ответы и закрашиваем зеленым начало
-                            for (int i = 0; i < count; i ++){
-                                TextView tv = findViewById(progress[i]);
-                                tv.setBackgroundResource(R.drawable.style_points_green);
-                            }
-                            //определяем правильные ответы и закрашиваем зеленым конец
-
-
-                        }else{
-
-                        }
-
+                    questionNumber++;
+                    setButtonText(questionNumber);
+                }else{
+                    //выводим сообщение что уровень пройде и выходим в главное мень с уровнями  ???
                 }
-                //проверяем касание конец
 
-
-                return true;
-            }
+            }//закрытие метода нажатия кнопки
         });
         //проверка нажатия на первую кнопку конец
-    }
+//==================================================================================
+        //проверка нажатия на вторую кнопку
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (questionNumber < 20){
+                    if (button3.getText().toString().equals(textAnswer))//проверяем рпавильность ответа
+                    {
+
+                        Log.i("111111", "Вторая кнопка");
+                        Log.i("111111", "Получаем ответ с кнопки " + button3.getText().toString());
+                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
+                        Log.i("111111", "Верно");
+
+
+                        Toast.makeText(getApplicationContext(), "Верно!", Toast.LENGTH_SHORT).show();
+                        TextView tv = findViewById(progress[questionNumber]);
+                        tv.setBackgroundResource(R.drawable.style_points_green);
+                        correctAnswer++;
+
+
+                    }else{
+
+                        Log.i("111111", "Вторая кнопка");
+                        Log.i("111111", "Получаем ответ с кнопки " + button3.getText().toString());
+                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
+                        Log.i("111111", "Ошибка");
+
+                        Toast.makeText(getApplicationContext(), "Ошибка!", Toast.LENGTH_SHORT).show();
+                        TextView tv = findViewById(progress[questionNumber]);
+                        tv.setBackgroundResource(R.drawable.style_points_red);
+                        wrongAnswer++;
+
+                    }
+                    questionNumber++;
+                    setButtonText(questionNumber);
+                }else{
+                    //выводим сообщение что уровень пройде и выходим в главное мень с уровнями  ???
+                }
+
+            }//закрытие метода нажатия кнопки
+        });
+        //проверка нажатия на вторую кнопку конец
+//==================================================================================
+        //проверка нажатия на третью кнопку
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (questionNumber < 20){
+                    if (button4.getText().toString().equals(textAnswer))//проверяем рпавильность ответа
+                    {
+                        Log.i("111111", "Третья кнопка");
+                        Log.i("111111", "Получаем ответ с кнопки " + button4.getText().toString());
+                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
+                        Log.i("111111", "Верно");
+
+                        Toast.makeText(getApplicationContext(), "Верно!", Toast.LENGTH_SHORT).show();
+                        TextView tv = findViewById(progress[questionNumber]);
+                        tv.setBackgroundResource(R.drawable.style_points_green);
+                        correctAnswer++;
+
+
+                    }else{
+
+                        Log.i("111111", "Третья кнопка");
+                        Log.i("111111", "Получаем ответ с кнопки " + button4.getText().toString());
+                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
+                        Log.i("111111", "Ошибка");
+
+                        Toast.makeText(getApplicationContext(), "Ошибка!", Toast.LENGTH_SHORT).show();
+                        TextView tv = findViewById(progress[questionNumber]);
+                        tv.setBackgroundResource(R.drawable.style_points_red);
+                        wrongAnswer++;
+
+                    }
+                    questionNumber++;
+                    setButtonText(questionNumber);
+                    System.out.println();
+                }else{
+                    //выводим сообщение что уровень пройде и выходим в главное мень с уровнями  ???
+                }
+
+            }//закрытие метода нажатия кнопки
+        });
+        //проверка нажатия на первую кнопку конец
+ // ==================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+    }//метод OnCreate
 
 
 
@@ -218,7 +313,7 @@ public class Level1 extends AppCompatActivity  {
                 button3.setText(list.get(a).getAnswer2());//установка значений для кнопки 1
                 button4.setText(list.get(a).getAnswer3());//установка значений для кнопки 1
                 Picasso.get().load(list.get(a).getAnswer4()).into(img);//установка картинки
-                textAnswer = list.get(a).getAnswer1();
+                textAnswer = list.get(a).getAnswer5();
             }
         });
     }
@@ -236,3 +331,87 @@ public class Level1 extends AppCompatActivity  {
     }
     //системная кнопка назад конец
 }
+
+
+
+
+
+
+
+
+/*
+        button2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //проверяем касание
+                if (event.getAction()==MotionEvent.ACTION_DOWN){
+                    button3.setEnabled(false); //блокируем кнопки остальные
+                    button4.setEnabled(false); //блокируем кнопки остальные
+
+                    if (button2.getText() == textAnswer){
+                        button2.setBackgroundColor(getResources().getColor(R.color.colorGreen)); //если правильно заливаем фон кнопки зеленым цветом
+                    }else{
+                        button2.setBackgroundColor(getResources().getColor(R.color.colorAccent));//если не правильно заливаем фон кнопки красным цветом
+                    }
+
+
+                }else
+                    //проверка отпуска пальца
+                    if (event.getAction()==MotionEvent.ACTION_UP){
+                        if (button2.getText() == textAnswer){
+                            if (count < 20 ){
+                                count++;
+                            }
+                            //закрашиваем прогресс серым цветом
+                            for (int i = 0; i <20; i++){
+                                TextView tv = findViewById(progress[i]);
+                                tv.setBackgroundResource(R.drawable.style_points);
+                            }
+                            //закрашиваем прогресс серым цветом конец
+
+                            //определяем правильные ответы и закрашиваем зеленым начало
+                            for (int i = 0; i < count; i ++){
+                                TextView tv = findViewById(progress[i]);
+                                tv.setBackgroundResource(R.drawable.style_points_green);
+                            }
+                            //определяем правильные ответы и закрашиваем зеленым конец
+
+
+                        }else{
+                            if (count > 0){
+                                if (count == 1){
+                                    count = 0;
+                                }else{
+                                    count = count -2;
+                                }
+                            }
+                            //закрашиваем прогресс серым цветом
+                            for (int i = 0; i <19; i++){
+                                TextView tv = findViewById(progress[i]);
+                                tv.setBackgroundResource(R.drawable.style_points);
+                            }
+                            //закрашиваем прогресс серым цветом конец
+                            //определяем правильные ответы и закрашиваем зеленым начало
+                            for (int i = 0; i < count; i ++){
+                                TextView tv = findViewById(progress[i]);
+                                tv.setBackgroundResource(R.drawable.style_points_green);
+                            }
+                            //определяем правильные ответы и закрашиваем зеленым конец
+                        }
+
+                        if (count == 20){
+                            //ВЫХОД ИЗ УРОВНЯ
+                        }else{
+                            setButtonText(questionNumber);
+                            button3.setEnabled(true); //включаем кнопки остальные
+                            button4.setEnabled(true); //включаем кнопки остальные
+                        }
+
+                }
+                //проверяем касание конец
+
+
+                return true;
+            }
+        });
+ */
