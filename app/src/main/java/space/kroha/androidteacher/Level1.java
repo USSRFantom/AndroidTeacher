@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -37,13 +39,17 @@ public class Level1 extends AppCompatActivity  {
     String textAnswer;
     ImageView img;
     int questionNumber;
-    private static FirebaseFirestore db;
-    public static List<Lesson> list;
     Dialog dialog;
     Dialog dialogEnd;
     public int count = 0;//счетчик правильных ответов
     int correctAnswer;
     int wrongAnswer;
+    TextView textViewQuest;
+    String[] question1;
+    String[] answer11;
+    String[] answer12;
+    String[] answer13;
+    String[] answer1true;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -57,12 +63,16 @@ public class Level1 extends AppCompatActivity  {
         img = findViewById(R.id.imageTest);
         TextView text_levels = findViewById(R.id.text_levels);
         text_levels.setText(R.string.level1);
-        list = new ArrayList<>();
+        textViewQuest = findViewById(R.id.textViewQuestion);
+        question1 = getResources().getStringArray(R.array.question1);
+        answer11 = getResources().getStringArray(R.array.answer11);
+        answer12 = getResources().getStringArray(R.array.answer12);
+        answer13 = getResources().getStringArray(R.array.answer13);
+        answer1true = getResources().getStringArray(R.array.answer1true);
 
 
 
-        //скругление картинки
-        img.setClipToOutline(true);
+
 
         //убираем менюшку с экрана
         Window w = getWindow();
@@ -184,37 +194,30 @@ public class Level1 extends AppCompatActivity  {
 
 
 
+
+
 //==================================================================================
         //проверка нажатия на первую кнопку
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (questionNumber < 19){
-                    if (button2.getText().toString().equals(textAnswer))//проверяем рпавильность ответа
+                    if (button2.getText().toString().equals(answer1true[questionNumber]))//проверяем рпавильность ответа
                     {
-                        Log.i("111111", "Первая кнопка");
-                        Log.i("111111", "Получаем ответ с кнопки " + button2.getText().toString());
-                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
-                        Log.i("111111", "Верно");
-                        Log.i("111111", String.valueOf(questionNumber));
-
-                        Toast.makeText(getApplicationContext(), "Верно!", Toast.LENGTH_SHORT).show();
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
                         correctAnswer++;
+                        Log.i("222222", button2.getText().toString());
+                        Log.i("222222", answer1true[questionNumber]);
 
 
                     }else{
-                        Log.i("111111", "Первая кнопка");
-                        Log.i("111111", "Получаем ответ с кнопки " + button2.getText().toString());
-                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
-                        Log.i("111111", "Ошибка");
-                        Log.i("111111", String.valueOf(questionNumber));
 
-                        Toast.makeText(getApplicationContext(), "Ошибка!", Toast.LENGTH_SHORT).show();
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_red);
                         wrongAnswer++;
+                        Log.i("2222221", button2.getText().toString());
+                        Log.i("2222221", answer1true[questionNumber]);
 
                     }
                     questionNumber++;
@@ -233,29 +236,12 @@ public class Level1 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 if (questionNumber <= 19){
-                    if (button3.getText().toString().equals(textAnswer))//проверяем рпавильность ответа
+                    if (button3.getText().toString().equals(answer1true[questionNumber]))//проверяем рпавильность ответа
                     {
-
-                        Log.i("111111", "Вторая кнопка");
-                        Log.i("111111", "Получаем ответ с кнопки " + button3.getText().toString());
-                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
-                        Log.i("111111", "Верно");
-
-
-                        Toast.makeText(getApplicationContext(), "Верно!", Toast.LENGTH_SHORT).show();
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
                         correctAnswer++;
-
-
                     }else{
-
-                        Log.i("111111", "Вторая кнопка");
-                        Log.i("111111", "Получаем ответ с кнопки " + button3.getText().toString());
-                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
-                        Log.i("111111", "Ошибка");
-
-                        Toast.makeText(getApplicationContext(), "Ошибка!", Toast.LENGTH_SHORT).show();
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_red);
                         wrongAnswer++;
@@ -276,27 +262,12 @@ public class Level1 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 if (questionNumber < 20){
-                    if (button4.getText().toString().equals(textAnswer))//проверяем рпавильность ответа
+                    if (button4.getText().toString().equals(answer1true[questionNumber]))//проверяем рпавильность ответа
                     {
-                        Log.i("111111", "Третья кнопка");
-                        Log.i("111111", "Получаем ответ с кнопки " + button4.getText().toString());
-                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
-                        Log.i("111111", "Верно");
-
-                        Toast.makeText(getApplicationContext(), "Верно!", Toast.LENGTH_SHORT).show();
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
                         correctAnswer++;
-
-
                     }else{
-
-                        Log.i("111111", "Третья кнопка");
-                        Log.i("111111", "Получаем ответ с кнопки " + button4.getText().toString());
-                        Log.i("111111", "Получаем ответ с базы" + textAnswer);
-                        Log.i("111111", "Ошибка");
-
-                        Toast.makeText(getApplicationContext(), "Ошибка!", Toast.LENGTH_SHORT).show();
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_red);
                         wrongAnswer++;
@@ -319,45 +290,18 @@ public class Level1 extends AppCompatActivity  {
 
 
 
-    private void readData(final FirestoreCallback firestoreCallback){
-        db = FirebaseFirestore.getInstance();
-        db.collection("users")
-              .get()
-              .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                  @Override
-                  public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                      if (task.isSuccessful()){
-                          Log.i("123233333", "Данные есть!");
-                          QuerySnapshot querySnapshot = task.getResult();
-                          if (querySnapshot == null)return;
-                          for (QueryDocumentSnapshot documentSnapshot : querySnapshot){
-                              Lesson lesson = documentSnapshot.toObject(Lesson.class);
-                              list.add(lesson);
-                          }
-                          firestoreCallback.onCallback(list);
-                      }else {
-                          Log.i("123233333", "НЕТ ДАННЫХ");
-                      }
-                  }
-              });
+
+
+
+        //метод установки данных в кнопки
+
+    public void setButtonText (final int a){
+        button2.setText(answer11[a]);
+        button3.setText(answer12[a]);
+        button4.setText(answer13[a]);
+        textViewQuest.setText(question1[a]);
     }
 
-    private interface FirestoreCallback{
-        void onCallback(List<Lesson> list);
-    }
-        //метод установки данных в кнопки и картинку
-    public void setButtonText (final int a){
-        readData(new FirestoreCallback() {
-            @Override
-            public void onCallback(List<Lesson> list) {
-                button2.setText(list.get(a).getAnswer1());//установка значений для кнопки 1
-                button3.setText(list.get(a).getAnswer2());//установка значений для кнопки 1
-                button4.setText(list.get(a).getAnswer3());//установка значений для кнопки 1
-                Picasso.get().load(list.get(a).getAnswer4()).into(img);//установка картинки
-                textAnswer = list.get(a).getAnswer5();
-            }
-        });
-    }
 
     //системная кнопка назад начало
     @Override
@@ -374,47 +318,3 @@ public class Level1 extends AppCompatActivity  {
 }
 
 
-
-
-
-/*
-        //_____________________________Диалоговое окно в конце игры
-        //Вызов диалогового окна в начале игры
-        dialogEnd = new Dialog(this);//создаем новое диалоговое окно
-        dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
-        dialogEnd.setContentView(R.layout.dialogend);//путь к макету диалогового окна
-        dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон диалогового окна
-        dialogEnd.setCancelable(false);//диалог нельзя закрыть кнопкой назат
-
-        //кнопка закрывающая диалоговое окно
-        TextView btnclose2 = dialogEnd.findViewById(R.id.btnclose);
-        btnclose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(Level1.this, GameLevels.class);  //возвращаемся в прошлое активити с выбором уровня
-                    startActivity(intent);
-                    finish();
-                }catch (Exception e){
-                    //Кода нет
-                }
-                dialogEnd.dismiss();//закрываем диалоговое окно
-            }
-        });
-        //кнопка закрывающая диалоговое окно конец
-
-        //кнопка продолжить начало
-        Button buttoncontinue2 = dialogEnd.findViewById(R.id.buttoncontinue);
-        buttoncontinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    dialogEnd.dismiss();//закрываем диалоговое окно, чтобы приступить к прохождению уровня
-                }catch (Exception e){
-                    //Кода нет
-                }
-            }
-        });
-
-        //_____________________________Диалоговое окно в конце игры
- */

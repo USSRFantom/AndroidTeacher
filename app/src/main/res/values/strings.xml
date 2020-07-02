@@ -6,6 +6,238 @@
     <string name="back1">Назад</string>
     <string name="level">Уровень:</string>
     <string name="level1">Уровень 1</string>
+    <string name="level2">Уровень 2</string>
     <string name="textcontinue">Продолжить</string>
+
+    <string-array name="question1">
+        <item>Java это?</item>
+        <item>Дата официального выпуска языка Java?</item>
+        <item>Название Java происходит от?</item>
+        <item>Автор языка Java?</item>
+        <item>Что нельзя создать (нет смысла) с помощью Java?</item>
+        <item>Минимальная реализация виртуальной машины, необходимой для использования Java – приложений, без компилятора и других средств разработки?</item>
+        <item>Бесплатно распространяемый комплект разработчика приложений на языке Java</item>
+        <item>Виртульаня машина Java</item>
+        <item>Нужен для запуска Java программ (содержит в себе JVM)</item>
+        <item>Нужен для разработки (это компилятор, отладчик и т. д.)</item>
+        <item>Является сердцем языка программирования Java  и обеспечивает независимость</item>
+        <item>Найди ошибку часть 1</item>
+        <item>Найди ошибку часть 2</item>
+        <item>Найди ошибку часть 3</item>
+        <item>Найди ошибку часть 4</item>
+        <item>выступает договором для объекта, что он должен скрыть, а что открыть для доступа другими объектами</item>
+        <item>способность предоставлять один и тот же интерфейс для различных базовых форм (типов данных).</item>
+        <item>включение поведения (т.е. методов) и состояния (т.е. переменных) базового класса в производный класс, таким образом они становятся доступны в этом производном классе.</item>
+        <item>разработка классов исходя из их интерфейсов и функциональности, не принимая во внимание реализацию деталей. </item>
+        <item>Приложения Java обычно транслируются в …</item>
+    </string-array>
+
+    <string-array name="answer11">
+        <item>объектно ориентированный язык программирования</item>
+        <item>22 июня 1993</item>
+        <item>От мульт персонажа</item>
+        <item>Джеймс Гослинг</item>
+        <item>Решения для бизнеса</item>
+        <item>JVM</item>
+        <item>JVM</item>
+        <item>JVM</item>
+        <item>JVM</item>
+        <item>JVM</item>
+        <item>JVM</item>
+        <item>Инкапсуляция</item>
+        <item>Наследования</item>
+        <item>Абстракция</item>
+        <item>Абстракция</item>
+        <item>Абстракция</item>
+        <item>Абстракция</item>
+        <item>Абстракция</item>
+        <item>Абстракция</item>
+        <item>байт код</item>
+    </string-array>
+
+    <string-array name="answer12">
+        <item>не объектно ориентированный язык программирования</item>
+        <item>23 мая 1995</item>
+        <item>От сорта кофе</item>
+        <item>Стив Джопс</item>
+        <item>Программы для микроконтроллеров</item>
+        <item>JRE</item>
+        <item>JRE</item>
+        <item>JRE</item>
+        <item>JRE</item>
+        <item>JRE</item>
+        <item>JRE</item>
+        <item>Наследования</item>
+        <item>Полиморфизм</item>
+        <item>Предводительство</item>
+        <item>Наследование</item>
+        <item>Инкапсуляция</item>
+        <item>Инкапсуляция</item>
+        <item>Инкапсуляция</item>
+        <item>Инкапсуляция</item>
+        <item>лайд</item>
+    </string-array>
+
+    <string-array name="answer13">
+        <item>Это мотоцикл 80х годов собранный на итальянском заводе</item>
+        <item>24 апреля 1994</item>
+        <item>от сорта чая</item>
+        <item>Фредерик Мартин</item>
+        <item>Драйвера</item>
+        <item>JDK</item>
+        <item>JDK</item>
+        <item>JDK</item>
+        <item>JDK</item>
+        <item>JDK</item>
+        <item>JDK</item>
+        <item>Конвенция</item>
+        <item>Резервирование</item>
+        <item>Полиморфизм</item>
+        <item>Спецификация</item>
+        <item>Наследование </item>
+        <item>Полиморфизм</item>
+        <item>Наследование</item>
+        <item>Наследование</item>
+        <item>компонент</item>
+    </string-array>
+
+    <string-array name="answer1true">
+        <item>объектно ориентированный язык программирования</item>
+        <item>23 мая 1995</item>
+        <item>От сорта кофе</item>
+        <item>Джеймс Гослинг</item>
+        <item>Драйвера</item>
+        <item>JRE</item>
+        <item>JDK</item>
+        <item>JVM</item>
+        <item>JRE</item>
+        <item>JDK</item>
+        <item>JVM</item>
+        <item>Конвенция</item>
+        <item>Резервирование</item>
+        <item>Предводительство</item>
+        <item>Спецификация</item>
+        <item>Инкапсуляция</item>
+        <item>Полиморфизм</item>
+        <item>Наследование</item>
+        <item>Абстракция</item>
+        <item>байт код</item>
+    </string-array>
+
+
+    <string-array name="question2">
+        <item>Именованная область памяти, которая хранит в себе какое-то значение, которое можно изменить</item>
+        <item>Первое присвоение переменной значения</item>
+        <item>Что не относится к целым типам</item>
+        <item>Что не относится к целым типам</item>
+        <item>Что не относится к вещественным типам</item>
+        <item>Что не относится к UNICODE?</item>
+        <item>В java  есть ключевые слова с зарезервированными идентификаторами, что к ним не относится?</item>
+        <item>Ключевые слова могут быть использованы в качестве идентификатора?</item>
+        <item>Спецификация языка Java рекомендует придерживаться определенных правил. Casing convention  при создании идентификаторов. Что к ним не относится?</item>
+        <item>Спецификация языка Java рекомендует придерживаться определенных правил. Casing convention  при создании идентификаторов. Что к ним не относится?</item>
+        <item>Именованная область памяти, которая хранит в себе некоторое значение, которое нельзя изменять</item>
+        <item>Поработаем головой. Возьмите 360 000 секунд и переведите их сначала в дни, потом то что осталось в часы, минуты и секунды.  Можно пользоваться средой разработки, тетрадкой или чем-то еще.</item>
+        <item>Преобразование значения переменной одного типа в значение другого типа</item>
+        <item>Преобразование выполняется в случае явного указания типа, в который необходимо преобразовать.</item>
+        <item>Преобразование выполняется автоматически без потери точности и урезания части исходного значения числа</item>
+        <item>Выберите оператор сложения</item>
+        <item>выберите оператор вычитания</item>
+        <item>выберите оператор умножения</item>
+        <item>выберите оператор деления</item>
+        <item>Выберите оператор остаток от деления</item>
+    </string-array>
+
+    <string-array name="answer21">
+        <item>Переменная</item>
+        <item>Конкатенация</item>
+        <item>byte</item>
+        <item>long</item>
+        <item>float</item>
+        <item>char</item>
+        <item>assert</item>
+        <item>Да</item>
+        <item>Pascal casing</item>
+        <item>Uppercase</item>
+        <item>переменная</item>
+        <item>4 4 0 0</item>
+        <item>автоматизация</item>
+        <item>неявный кастинг</item>
+        <item>неявный кастинг</item>
+        <item>+</item>
+        <item>+</item>
+        <item>-</item>
+        <item>%</item>
+        <item>%</item>
+    </string-array>
+
+    <string-array name="answer22">
+    <item>Константа</item>
+    <item>Константа</item>
+    <item>short</item>
+    <item>byte</item>
+    <item>char</item>
+    <item>boolean</item>
+    <item>final</item>
+    <item>Нет</item>
+    <item>Camel casing</item>
+    <item>Pascal casing</item>
+    <item>константа</item>
+    <item>4 4 1 44</item>
+    <item>кастинг</item>
+    <item>явный кастинг</item>
+    <item>явный кастинг</item>
+    <item>-</item>
+    <item>-</item>
+    <item>*</item>
+    <item>/</item>
+    <item>/</item>
+</string-array>
+
+    <string-array name="answer23">
+        <item>Конкатенация</item>
+        <item>Инициализация</item>
+        <item>float</item>
+        <item>double</item>
+        <item>double</item>
+        <item>double</item>
+        <item>doto</item>
+        <item>В java их нет</item>
+        <item>Rothmans casing</item>
+        <item>Rothmans casing</item>
+        <item>кастинг</item>
+        <item>3 4 0 0</item>
+        <item>выборка</item>
+        <item>обычный кастинг</item>
+        <item>обычный кастинг</item>
+        <item>*</item>
+        <item>*</item>
+        <item>+</item>
+        <item>\</item>
+        <item>\</item>
+    </string-array>
+
+    <string-array name="answer2true">
+        <item>Переменная</item>
+        <item>Инициализация</item>
+        <item>float</item>
+        <item>double</item>
+        <item>char</item>
+        <item>double</item>
+        <item>doto</item>
+        <item>Нет</item>
+        <item>Rothmans casing</item>
+        <item>Rothmans casing</item>
+        <item>константа</item>
+        <item>4 4 0 0</item>
+        <item>кастинг</item>
+        <item>явный кастинг</item>
+        <item>неявный кастинг</item>
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+        <item>%</item>
+    </string-array>
 
 </resources>
