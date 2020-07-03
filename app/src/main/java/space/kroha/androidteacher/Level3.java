@@ -13,23 +13,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class Level2 extends AppCompatActivity  {
+public class Level3 extends AppCompatActivity  {
 
     Button button2;
     Button button3;
@@ -43,11 +31,11 @@ public class Level2 extends AppCompatActivity  {
     int correctAnswer;
     int wrongAnswer;
     TextView textViewQuest;
-    String[] question2;
-    String[] answer21;
-    String[] answer22;
-    String[] answer23;
-    String[] answer2true;
+    String[] question3;
+    String[] answer31;
+    String[] answer32;
+    String[] answer33;
+    String[] answer3true;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -60,13 +48,13 @@ public class Level2 extends AppCompatActivity  {
         button4 = findViewById(R.id.button4);
         img = findViewById(R.id.imageTest);
         TextView text_levels = findViewById(R.id.text_levels);
-        text_levels.setText(R.string.level2);
+        text_levels.setText(R.string.level3);
         textViewQuest = findViewById(R.id.textViewQuestion);
-        question2 = getResources().getStringArray(R.array.question2);
-        answer21 = getResources().getStringArray(R.array.answer21);
-        answer22 = getResources().getStringArray(R.array.answer22);
-        answer23 = getResources().getStringArray(R.array.answer23);
-        answer2true = getResources().getStringArray(R.array.answer2true);
+        question3 = getResources().getStringArray(R.array.question3);
+        answer31 = getResources().getStringArray(R.array.answer31);
+        answer32 = getResources().getStringArray(R.array.answer32);
+        answer33 = getResources().getStringArray(R.array.answer33);
+        answer3true = getResources().getStringArray(R.array.answer3true);
 
 
 
@@ -89,7 +77,7 @@ public class Level2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(Level2.this, GameLevels.class);  //возвращаемся в прошлое активити с выбором уровня
+                    Intent intent = new Intent(Level3.this, GameLevels.class);  //возвращаемся в прошлое активити с выбором уровня
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -130,7 +118,7 @@ public class Level2 extends AppCompatActivity  {
             public void onClick(View v) {
                 try {
                     Log.i("1231231231", "перешли на вторую активность");
-                    Intent intent = new Intent(Level2.this, GameLevels.class);  //возвращаемся в прошлое активити с выбором уровня
+                    Intent intent = new Intent(Level3.this, GameLevels.class);  //возвращаемся в прошлое активити с выбором уровня
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -147,7 +135,7 @@ public class Level2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(Level2.this, Level3.class);  //возвращаемся в прошлое активити с выбором уровня
+                    Intent intent = new Intent(Level3.this, Level3.class);  //возвращаемся в прошлое активити с выбором уровня
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -169,7 +157,7 @@ public class Level2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(Level2.this, GameLevels.class);
+                    Intent intent = new Intent(Level3.this, GameLevels.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -200,13 +188,13 @@ public class Level2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 if (questionNumber < 19){
-                    if (button2.getText().toString().equals(answer2true[questionNumber]))//проверяем рпавильность ответа
+                    if (button2.getText().toString().equals(answer3true[questionNumber]))//проверяем рпавильность ответа
                     {
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
                         correctAnswer++;
                         Log.i("222222", button2.getText().toString());
-                        Log.i("222222", answer2true[questionNumber]);
+                        Log.i("222222", answer3true[questionNumber]);
 
 
                     }else{
@@ -215,7 +203,7 @@ public class Level2 extends AppCompatActivity  {
                         tv.setBackgroundResource(R.drawable.style_points_red);
                         wrongAnswer++;
                         Log.i("2222221", button2.getText().toString());
-                        Log.i("2222221", answer2true[questionNumber]);
+                        Log.i("2222221", answer3true[questionNumber]);
 
                     }
                     questionNumber++;
@@ -234,7 +222,7 @@ public class Level2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 if (questionNumber <= 19){
-                    if (button3.getText().toString().equals(answer2true[questionNumber]))//проверяем рпавильность ответа
+                    if (button3.getText().toString().equals(answer3true[questionNumber]))//проверяем рпавильность ответа
                     {
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
@@ -260,7 +248,7 @@ public class Level2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 if (questionNumber < 20){
-                    if (button4.getText().toString().equals(answer2true[questionNumber]))//проверяем рпавильность ответа
+                    if (button4.getText().toString().equals(answer3true[questionNumber]))//проверяем рпавильность ответа
                     {
                         TextView tv = findViewById(progress[questionNumber]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
@@ -294,10 +282,10 @@ public class Level2 extends AppCompatActivity  {
     //метод установки данных в кнопки
 
     public void setButtonText (final int a){
-        button2.setText(answer21[a]);
-        button3.setText(answer22[a]);
-        button4.setText(answer23[a]);
-        textViewQuest.setText(question2[a]);
+        button2.setText(answer31[a]);
+        button3.setText(answer32[a]);
+        button4.setText(answer33[a]);
+        textViewQuest.setText(question3[a]);
     }
 
 
@@ -305,7 +293,7 @@ public class Level2 extends AppCompatActivity  {
     @Override
     public void onBackPressed(){
         try {
-            Intent intent = new Intent(Level2.this, GameLevels.class);
+            Intent intent = new Intent(Level3.this, GameLevels.class);
             startActivity(intent);
             finish();
         }catch (Exception e){
@@ -314,3 +302,4 @@ public class Level2 extends AppCompatActivity  {
     }
     //системная кнопка назад конец
 }
+
